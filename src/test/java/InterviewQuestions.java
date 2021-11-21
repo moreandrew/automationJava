@@ -73,7 +73,6 @@ public class InterviewQuestions {
         for(char letter: text.toCharArray()){
             if (letter == letterToFind) numberOfOccurrences++;
         }
-
         return numberOfOccurrences;
     }
 }
