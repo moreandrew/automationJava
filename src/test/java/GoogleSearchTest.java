@@ -11,13 +11,16 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class GoogleSearchTest {
+public class GoogleSearchTest  {
 
     WebDriver driver;
 
-
+    @Parameters({"browser"})
     @BeforeSuite
-    public void suiteSetup(){
+    public void suiteSetup(String browser){
+
+        if (browser.equalsIgnoreCase("chrome"))  driver = new ChromeDriver();
+
         String os = System.getProperty("os.name");
 
         if (os.contains("Win")){
@@ -31,11 +34,9 @@ public class GoogleSearchTest {
         //System.out.println(os);
     }
 
-    @Parameters({"browser"})
-    @Test
-    public void testGoogleSearch(String browser) {
 
-        if (browser.equalsIgnoreCase("chrome"))  driver = new ChromeDriver();
+    @Test
+    public void testGoogleSearch() {
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
