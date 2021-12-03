@@ -1,49 +1,47 @@
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
-import java.time.Duration;
-
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Parameters;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class GoogleSearchTest  {
+import static java.lang.Thread.sleep;
 
-    WebDriver driver;
-
-    @Parameters({"browser"})
-    @BeforeSuite
-    public void suiteSetup(String browser){
-
-        if (browser.equalsIgnoreCase("chrome"))  driver = new ChromeDriver();
-
-        String os = System.getProperty("os.name");
-
-        if (os.contains("Win")){
-            System.setProperty("webdriver.chrome.driver", "C:/Webdriver/bin/chromedriver.exe");
-        }
-    }
-
-    @Test
-    public void testOS() {
-
-        //System.out.println(os);
-    }
-
+public class GoogleSearchTest extends TestBase {
 
     @Test
     public void testGoogleSearch() {
+        navigateToSearchPage();
+        submitQuery();
+        int actualResults = parseNumberOfResults();
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        Assert.assertTrue(actualResults > 1000);
+    }
 
-        driver.get("https://google.com/");
+    private int parseNumberOfResults() {
+        WebElement statResult = driver.findElement(By.id("result-stats"));
+        int parsedResult = CommonTools.parseResults(statResult);
 
+        return parsedResult;
+    }
+
+    private void submitQuery() {
         WebElement textInput = driver.findElement(By.name("q"));
         textInput.sendKeys("Portnov computer school");
+        try {
+            sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         textInput.submit();
     }
+
+    private void navigateToSearchPage() {
+        driver.get("https://google.com/");
+    }
+
+    /*@Test
+    public void startTest(){
+        GoogleSearchTest obj = new GoogleSearchTest();
+        obj.suiteSetup("chrome");
+        obj.testGoogleSearch();
+    }*/
 }
