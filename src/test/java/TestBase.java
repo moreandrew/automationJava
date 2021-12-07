@@ -1,9 +1,6 @@
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 public class TestBase {
 
@@ -11,7 +8,7 @@ public class TestBase {
 
     @Parameters({"browser"})
     @BeforeSuite
-    public void suiteSetup(String browser){
+    public void suiteSetup(@Optional("chrome") String browser){
 
         if (browser.equalsIgnoreCase("chrome"))  driver = new ChromeDriver();
 
@@ -22,6 +19,7 @@ public class TestBase {
     }
 
     @AfterSuite
+    @Test
     public void afterSuite(){
         try {
             Thread.sleep(1000);
