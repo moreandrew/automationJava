@@ -1,3 +1,5 @@
+package uitests;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -9,7 +11,7 @@ public class TestBase {
 
     @Parameters({"browser"})
     @BeforeSuite
-    public void suiteSetup(@Optional("firefox") String browser){
+    public void suiteSetup(@Optional("chrome") String browser){
 
         if (browser.equalsIgnoreCase("chrome")) {
             driver = new ChromeDriver();

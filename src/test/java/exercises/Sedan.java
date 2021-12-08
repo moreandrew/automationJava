@@ -1,3 +1,7 @@
+package exercises;
+
+import exercises.Car;
+
 public class Sedan extends Car {
 
     String groundClearance;

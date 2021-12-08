@@ -1,3 +1,6 @@
+package exercises;
+
+import exercises.Student;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

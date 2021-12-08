@@ -1,3 +1,6 @@
+package exercises;
+
+import exercises.Car;
 import org.testng.annotations.Test;
 
 public class CarTest {

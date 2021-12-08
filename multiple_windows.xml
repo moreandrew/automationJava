@@ -4,7 +4,7 @@
     <parameter name="browser" value="chrome"></parameter>
     <test name="Regression2"   >
         <classes>
-            <class name="WindowHandlesTest">
+            <class name="uitests.WindowHandlesTest">
                 <methods>
                     <include name="testNewTab" />
                 </methods>

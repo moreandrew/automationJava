@@ -1,3 +1,6 @@
+package exercises;
+
+import exercises.Sedan;
 import org.testng.annotations.Test;
 
 public class SedanTest {
