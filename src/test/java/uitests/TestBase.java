@@ -11,7 +11,7 @@ public class TestBase {
 
     @Parameters({"browser"})
     @BeforeSuite
-    public void suiteSetup(@Optional("chrome") String browser){
+    public void suiteSetup(@Optional("firefox") String browser){
 
         if (browser.equalsIgnoreCase("chrome")) {
             driver = new ChromeDriver();
@@ -27,11 +27,6 @@ public class TestBase {
     @AfterSuite
     @Test
     public void afterSuite(){
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         driver.quit();
     }
 

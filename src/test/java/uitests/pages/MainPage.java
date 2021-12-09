@@ -17,9 +17,9 @@ public class MainPage {
         driver.get("https://google.com/");
     }
 
-    public void typeAndSubmitQuery() {
+    public void typeAndSubmitQuery(String queryText) {
         WebElement textInput = driver.findElement(searchInput);
-        textInput.sendKeys("Portnov computer school");
+        textInput.sendKeys(queryText);
         textInput.submit();
     }
 
