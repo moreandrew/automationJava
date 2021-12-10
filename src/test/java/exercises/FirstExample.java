@@ -1,3 +1,5 @@
+package exercises;
+
 import org.testng.annotations.Test;
 
 public class FirstExample {
